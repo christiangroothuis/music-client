@@ -1,4 +1,4 @@
-import { GET_HOME, GET_ARTISTS, GET_ARTIST } from './constants';
+import { GET_HOME, GET_ARTISTS, GET_ARTIST, GET_ALBUMS } from './constants';
 
 const initialState = {
     home: {
@@ -24,12 +24,17 @@ const apiReducer = (state = initialState, { type, payload }) => {
                 ...state,
                 artists: payload,
             };
+        case GET_ALBUMS:
+            return {
+                ...state,
+                albums: payload,
+            };
         case GET_ARTIST:
             return {
                 ...state,
                 artists: {
-                   ...state.artistData,
-                   [payload._id]: payload,
+                    ...state.artistData,
+                    [payload._id]: payload,
                 }
             };
         default:

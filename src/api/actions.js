@@ -1,4 +1,4 @@
-import { GET_HOME, GET_ARTISTS, GET_ARTIST } from './constants';
+import { GET_HOME, GET_ARTISTS, GET_ARTIST, GET_ALBUMS } from './constants';
 
 import { API_URL } from '../constants';
 
@@ -13,6 +13,13 @@ export const getArtists = () => dispatch => {
     return fetch(`${API_URL}/artists`)
         .then(res => res.json())
         .then(data => dispatch({ type: GET_ARTISTS, payload: data.artists }))
+        .catch(err => console.log(err))
+}
+
+export const getAlbums = () => dispatch => {
+    return fetch(`${API_URL}/albums`)
+        .then(res => res.json())
+        .then(data => dispatch({ type: GET_ALBUMS, payload: data.albums }))
         .catch(err => console.log(err))
 }
 
