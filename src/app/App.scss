@@ -103,6 +103,11 @@ input[type="reset"] {
 	src: url(./common/fonts/CircularStd-Black.otf);
 }
 
+@font-face {
+	font-family: stratos;
+	src: url(./common/fonts/CircularStd-Book.otf);
+}
+
 body,
 button,
 input {
@@ -183,23 +188,16 @@ a:hover {
 
 		svg {
 			width: auto;
+			height: 52px;
 			padding-right: 10px;
 		}
 	}
 
 	ul {
 		li {
-			width: 90%;
-			height: 40px;
 			margin: 0 auto;
-			border-radius: 4px;
-			display: flex;
-			align-items: center;
-			padding: 20px 15px;
+			width: 90%;
 			list-style-type: none;
-			transition: color 0.3s ease-in-out;
-			font-weight: 200;
-			font-family: circular-bold;
 
 			&:hover {
 				color: #fff;
@@ -214,7 +212,20 @@ a:hover {
 			}
 		}
 
-		a.active li {
+		a {
+			padding: 20px 10px;
+			width: 100%;
+			height: 100%;
+			height: 40px;
+			border-radius: 4px;
+			display: flex;
+			align-items: center;
+			transition: color 0.3s ease-in-out;
+			font-weight: 200;
+			font-family: circular-bold;
+		}
+
+		a.active {
 			background-color: $greyLighter;
 			color: #fff;
 
@@ -346,11 +357,8 @@ a:hover {
 				display: flex;
 				align-items: center;
 				pointer-events: none;
-
-				span {
-					flex: 1;
-					color: $greyLight;
-				}
+				flex: 1;
+				color: $greyLight;
 
 				svg {
 					display: block;

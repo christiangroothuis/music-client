@@ -2,43 +2,44 @@ import React from 'react';
 import { NavLink } from "react-router-dom";
 
 import { ReactComponent as Logo } from '../../logo.svg';
+import { ReactComponent as Music } from '../common/icons/music.svg';
 import { ReactComponent as Home } from '../common/icons/home.svg';
 import { ReactComponent as Magnifier } from '../common/icons/search.svg';
 import { ReactComponent as Library } from '../common/icons/book.svg';
-import { ReactComponent as Info } from '../common/icons/info.svg';
+import { ReactComponent as Github } from '../common/icons/github.svg';
 
 export default function sideNav() {
     return (
         <div className="sideNav">
 
             <NavLink to="/" exact className="nav-logo" style={{ display: "flex", alignItems: "center" }}>
-                <Logo /><span>Christian's<br /> Music</span>
+                <Music /><span>Christian's<br /> Music</span>
             </NavLink>
             <ul className="page-links">
-                <NavLink exact to="/">
-                    <li>
+                <li>
+                    <NavLink exact to="/">
                         <Home />
                         Home
-                    </li>
-                </NavLink>
-                <NavLink to="/search">
-                    <li>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/search">
                         <Magnifier />
                         Search
-                    </li>
-                </NavLink>
-                <NavLink to="/collection">
-                    <li>
+                    </NavLink>
+                </li>
+                <li>
+                    <NavLink to="/collection">
                         <Library />
                         Library
-                    </li>
-                </NavLink>
-                <NavLink to="/about">
-                    <li>
-                        <Info />
-                        About
-                    </li>
-                </NavLink>
+                    </NavLink>
+                </li>
+                <li>
+                    <a target='_blank' rel="noopener noreferrer" href='https://github.com/JuanGrooth/music-client'>
+                        <Github />
+                        Github
+                    </a>
+                </li>
             </ul>
         </div >
     )
