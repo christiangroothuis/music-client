@@ -84,28 +84,26 @@ input[type="reset"] {
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
-	// padding-right: 1px;
-	// margin-right: -1px;
 }
 
 @font-face {
 	font-family: circular-book;
-	src: url(./common/fonts/CircularStd-Book.otf);
+	src: url(./common/fonts/circular/CircularStd-Book.otf);
 }
 
 @font-face {
 	font-family: circular-bold;
-	src: url(./common/fonts/CircularStd-Bold.otf);
+	src: url(./common/fonts/circular/CircularStd-Bold.otf);
 }
 
 @font-face {
 	font-family: circular-black;
-	src: url(./common/fonts/CircularStd-Black.otf);
+	src: url(./common/fonts/circular/CircularStd-Black.otf);
 }
 
 @font-face {
 	font-family: stratos;
-	src: url(./common/fonts/CircularStd-Book.otf);
+	src: url(./common/fonts/stratos/Stratos-Medium.otf);
 }
 
 body,
@@ -122,7 +120,8 @@ input {
 		Helvetica, Arial, Hiragino Kaku Gothic Pro, Meiryo, MS Gothic,
 		sans-serif;
 	// font-family: "Montserrat", sans-serif;
-	font-family: circular-book;
+	// font-family: stratos, sans-serif;
+	font-family: circular-book, sans-serif;
 	color: #b3b3b3;
 }
 
