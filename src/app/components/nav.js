@@ -10,7 +10,6 @@ import { ReactComponent as Github } from '../common/icons/github.svg';
 export default function sideNav() {
     return (
         <div className="sideNav">
-
             <NavLink to="/" exact className="nav-logo" style={{ display: "flex", alignItems: "center" }}>
                 <Music /><span>Christian's<br /> Music</span>
             </NavLink>
