@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getArtists } from '../../api/actions';
+import { getArtists,getAlbums } from '../../api/actions';
 
 import CollectionComponent from './CollectionComponent';
 
@@ -10,11 +10,13 @@ CollectionComponent.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-    artists: state.apiState.artists
+    artists: state.apiState.artists,
+    albums: state.apiState.albums
 })
 
 const dispatchToProps = (dispatch) => ({
-    getArtists: () => dispatch(getArtists())
+    getArtists: () => dispatch(getArtists()),
+    getAlbums: () => dispatch(getAlbums())
 })
 
 export default connect(mapStateToProps, dispatchToProps)(CollectionComponent);
