@@ -29,9 +29,9 @@ function Artist({ setFocus }) {
 		setQuery(searchQuery);
 
 		if (searchQuery.length > 0) {
-			// if (query.length % 2 === 0) {
-			fetchSearch(searchQuery);
-			// }
+			if (query.length % 2 === 0) {
+				fetchSearch(searchQuery);
+			}
 		}
 	};
 
@@ -53,38 +53,36 @@ function Artist({ setFocus }) {
 							onBlur={() => setFocus(false)}
 						/>
 						<div className="search-icon">
-							<span>
 								<Search />
-							</span>
 						</div>
 					</div>
 				</>
 			}
 		>
 			{
-				query.length > 0
-					&& [
-							result.albums && result.albums.length > 0 && (
-								<CardSection
-									title="Albums"
-									rows="1"
-									data={result.albums}
-								/>
-							),
-							result.artists && result.artists.length > 0 && (
-								<CardSection
-									title="Artists"
-									rows="1"
-									data={result.artists}
-								/>
-							),result.songs && result.songs.length > 0 && (
-								<CardSection
-									title="Songs"
-									rows="1"
-									data={result.songs}
-								/>
-							),
-					  ]
+				query.length > 0 && [
+					result.albums && result.albums.length > 0 && (
+						<CardSection
+							title="Albums"
+							rows="1"
+							data={result.albums}
+						/>
+					),
+					result.artists && result.artists.length > 0 && (
+						<CardSection
+							title="Artists"
+							rows="1"
+							data={result.artists}
+						/>
+					),
+					result.songs && result.songs.length > 0 && (
+						<CardSection
+							title="Songs"
+							rows="1"
+							data={result.songs}
+						/>
+					),
+				]
 				// <CardSection title="Recent searches" />
 			}
 		</Main>
