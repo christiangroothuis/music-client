@@ -29,9 +29,9 @@ function Artist({ setFocus }) {
 		setQuery(searchQuery);
 
 		if (searchQuery.length > 0) {
-			if (query.length % 2 === 0) {
+			// if (query.length % 2 === 0) {
 				fetchSearch(searchQuery);
-			}
+			// }
 		}
 	};
 
@@ -47,7 +47,7 @@ function Artist({ setFocus }) {
 							autoCorrect="off"
 							autoCapitalize="off"
 							spellCheck="false"
-							placeholder="Search for Artists and Albums"
+							placeholder="Search for Artists, Albums and Songs"
 							value={query}
 							onFocus={() => setFocus(true)}
 							onBlur={() => setFocus(false)}

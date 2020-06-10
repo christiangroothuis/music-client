@@ -26,7 +26,7 @@ function Home({getHome, home, audioState}) {
 				data={home.albums}
 			/>
 			<CardSection
-				link="/collection/albums"
+				link="/collection/artists"
 				rows="1"
 				title="Featured artists"
 				data={home.artists}

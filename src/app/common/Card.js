@@ -16,7 +16,29 @@ function Card({ title, type, id, artists, img }) {
             if (artists) {
                 desc = artists.map((artist, i) => {
                     return (
-                        <div key={i}>
+                        <>
+                            <Link
+                                className="link-border"
+                                key={i}
+                                to={'/artist/' + artist._id}
+                            >
+                                {artist.name}
+
+                            </Link>
+                            {i < artists.length - 1 ? ',  ' : ''}
+                        </>
+                    )
+                })
+            }
+            break;
+        case 'song':
+            console.log(type, artists)
+            href = `/album/${id}`;
+            if (artists) {
+                desc = artists.map((artist, i) => {
+                    return (
+                        // <div key={i}>
+                        <>
                             <Link
                                 className="link-border"
 
@@ -26,7 +48,8 @@ function Card({ title, type, id, artists, img }) {
 
                             </Link>
                             {i < artists.length - 1 ? ',  ' : ''}
-                        </div>
+                        </>
+                        // </div>
                     )
                 })
             }
