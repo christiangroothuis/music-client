@@ -1,7 +1,6 @@
 import React from 'react';
 import { NavLink } from "react-router-dom";
 
-import { ReactComponent as Logo } from '../../logo.svg';
 import { ReactComponent as Music } from '../common/icons/music.svg';
 import { ReactComponent as Home } from '../common/icons/home.svg';
 import { ReactComponent as Magnifier } from '../common/icons/search.svg';
