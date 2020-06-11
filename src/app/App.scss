@@ -232,6 +232,13 @@ a:hover {
 				stroke-width: 2;
 			}
 		}
+
+		.right {
+			margin-left: auto;
+			margin-right: 0;
+			height: 20px;
+			width: 20px;
+		}
 	}
 }
 
@@ -665,6 +672,26 @@ a:hover {
 					opacity: 1;
 				}
 			}
+		}
+
+		li.active svg,
+		li.active .track-name,
+		li.active .duration {
+			color: #1ed760 !important;
+		}
+
+		li .hover {
+			display: none;
+		}
+
+		li:hover {
+			svg {
+				display: none
+			}
+		}
+
+		li:hover .hover {
+			display: initial
 		}
 	}
 }

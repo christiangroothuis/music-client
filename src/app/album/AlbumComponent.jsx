@@ -13,8 +13,9 @@ import ErrorPage from "../common/ErrorPage";
 import { ReactComponent as Music } from "../common/icons/music.svg";
 import { ReactComponent as Play } from "../common/icons/play.svg";
 import { ReactComponent as Pause } from "../common/icons/pause.svg";
+import { ReactComponent as Volume } from "../common/icons/volume/volume-2.svg";
 
-function Album({ playAlbum, audioState }) {
+function Album({ playAlbum, audioState, pause }) {
 	const { albumId } = useParams();
 
 	const [album, setAlbum] = useState();
@@ -37,7 +38,7 @@ function Album({ playAlbum, audioState }) {
 	}
 
 	if (loading || !album) {
-		return <SpinnerPage/>;
+		return <SpinnerPage />;
 	}
 
 	let time = "";
@@ -133,17 +134,43 @@ function Album({ playAlbum, audioState }) {
 				{album.tracks &&
 					album.tracks.map((track, i) => {
 						return (
-							<li key={i} className="track">
+							<li
+								key={i}
+								className={
+									audioState.playlist[
+										audioState.currentIndex
+									] &&
+									audioState.playlist[audioState.currentIndex]
+										._id === track._id
+										? "track active"
+										: "track"
+								}
+							>
 								<div
 									className="icon top-align"
 									onClick={() =>
+										audioState.isPlaying ? pause() :
 										playAlbum({
 											album: album._id,
 											index: i,
 										})
 									}
 								>
-									<Play />
+									{audioState.playlist[
+										audioState.currentIndex
+									] &&
+									audioState.playlist[audioState.currentIndex]
+										._id === track._id ? (
+										<>
+											<Pause className="hover" />
+											<Volume />
+										</>
+									) : (
+										<>
+											<Play className="hover" />
+											<Music />
+										</>
+									)}
 								</div>
 								<div className="name">
 									<div className="name-wrapper top-align">

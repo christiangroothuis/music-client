@@ -5,7 +5,7 @@ import { API_URL } from '../constants';
 let loaded = false;
 
 const load = () => {
-   // Load audio to avoid permission issues in safari
+   // Load audio to avoid permission issues
    const audio = document.getElementById('audio');
    if (!loaded && audio) {
       audio.load();

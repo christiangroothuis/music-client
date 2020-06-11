@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { playAlbum } from '../../audio/actions';
+import { playAlbum, pause } from '../../audio/actions';
 
 import AlbumComponent from './AlbumComponent';
 
@@ -14,7 +14,8 @@ const mapStateToProps = (state) => ({
 })
 
 const dispatchToProps = (dispatch) => ({
-    playAlbum: ({ album, index }) => dispatch(playAlbum({ album, index }))
+    playAlbum: ({ album, index }) => dispatch(playAlbum({ album, index })),
+    pause: () => dispatch(pause())
 })
 
 export default connect(mapStateToProps, dispatchToProps)(AlbumComponent);
