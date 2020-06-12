@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import { ReactComponent as Arrow } from './icons/chevron-left.svg';
 
-const Main = React.memo(({history, color, header, navBar, children}) => {
+const Main = ({ history, color, header, navBar, children }) => {
     const contentRef = useRef();
 
     const [topBarOpacity, setTopBarOpacity] = useState(0);
@@ -11,20 +11,21 @@ const Main = React.memo(({history, color, header, navBar, children}) => {
 
     // Change opacity of topbar based of offsetTop of contentRef
     useEffect(() => {
-        const onScroll = e => {
+        const onScroll = () => {
             if (window.scrollY <= contentRef.current.offsetTop - 60) {
                 setTopBarOpacity(0)
-            }
-            else if (window.scrollY <= contentRef.current.offsetTop) {
-                setTopBarOpacity((1 - (contentRef.current.offsetTop - window.scrollY) / 60))
-
                 setShowNavContent(false)
             }
-            else {
+            else if (window.scrollY >= contentRef.current.offsetTop) {
                 setTopBarOpacity(1)
                 setShowNavContent(true);
             }
+            else {
+                setTopBarOpacity((1 - (contentRef.current.offsetTop - window.scrollY) / 60))
+                setShowNavContent(false)
+            }
         };
+        
         window.addEventListener("scroll", onScroll);
 
         return () => window.removeEventListener("scroll", onScroll);
@@ -84,6 +85,6 @@ const Main = React.memo(({history, color, header, navBar, children}) => {
             </div>
         </div>
     )
-});
+};
 
 export default withRouter(Main);
