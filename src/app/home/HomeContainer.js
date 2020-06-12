@@ -11,7 +11,7 @@ HomeComponent.propTypes = {
 
 const mapStateToProps = (state) => ({
     home: state.apiState.home,
-    audioState: state.audioState
+    recents: state.audioState.recents
 })
 
 const dispatchToProps = (dispatch) => ({

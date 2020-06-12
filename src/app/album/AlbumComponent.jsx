@@ -15,7 +15,7 @@ import { ReactComponent as Play } from "../common/icons/play.svg";
 import { ReactComponent as Pause } from "../common/icons/pause.svg";
 import { ReactComponent as Volume } from "../common/icons/volume/volume-2.svg";
 
-function Album({ playAlbum, audioState, pause }) {
+function Album({ playAlbum, pause, isPlaying, playlist, currentIndex }) {
 	const { albumId } = useParams();
 
 	const [album, setAlbum] = useState();
@@ -137,10 +137,10 @@ function Album({ playAlbum, audioState, pause }) {
 							<li
 								key={i}
 								className={
-									audioState.playlist[
-										audioState.currentIndex
+									playlist[
+										currentIndex
 									] &&
-									audioState.playlist[audioState.currentIndex]
+									playlist[currentIndex]
 										._id === track._id
 										? "track active"
 										: "track"
@@ -149,17 +149,18 @@ function Album({ playAlbum, audioState, pause }) {
 								<div
 									className="icon top-align"
 									onClick={() =>
-										audioState.isPlaying ? pause() :
-										playAlbum({
-											album: album._id,
-											index: i,
-										})
+										isPlaying
+											? pause()
+											: playAlbum({
+													album: album._id,
+													index: i,
+											  })
 									}
 								>
-									{audioState.playlist[
-										audioState.currentIndex
+									{playlist[
+										currentIndex
 									] &&
-									audioState.playlist[audioState.currentIndex]
+									playlist[currentIndex]
 										._id === track._id ? (
 										<>
 											<Pause className="hover" />

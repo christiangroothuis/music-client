@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import Main from "../common/Main";
 import CardSection from "../common/CardSection";
 
-function Home({getHome, home, audioState}) {
+function Home({getHome, home, recents}) {
 	useEffect(() => {
 		if (home.albums.length === 0 && home.artists.length === 0) {
 			getHome();
@@ -11,12 +11,12 @@ function Home({getHome, home, audioState}) {
 
 	return (
 		<Main>
-			{audioState.recents.length > 0 && (
+			{recents.length > 0 && (
 				<CardSection
 					// link="/genre/recently-played"
 					rows="1"
 					title="Recently played"
-					data={audioState.recents}
+					data={recents}
 				/>
 			)}
 			<CardSection

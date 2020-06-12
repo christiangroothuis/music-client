@@ -10,7 +10,9 @@ AlbumComponent.propTypes = {
 }
 
 const mapStateToProps = (state) => ({
-    audioState: state.audioState
+    isPlaying: state.audioState.isPlaying,
+    playlist: state.audioState.playlist,
+    currentIndex: state.audioState.isPlaying,
 })
 
 const dispatchToProps = (dispatch) => ({

@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 
 import { ReactComponent as Arrow } from './icons/chevron-left.svg';
 
-function Main(props) {
+const Main = React.memo(({history, color, header, navBar, children}) => {
     const contentRef = useRef();
 
     const [topBarOpacity, setTopBarOpacity] = useState(0);
@@ -24,8 +24,6 @@ function Main(props) {
                 setTopBarOpacity(1)
                 setShowNavContent(true);
             }
-
-
         };
         window.addEventListener("scroll", onScroll);
 
@@ -33,10 +31,10 @@ function Main(props) {
     }, []);
 
     const goBack = () => {
-        props.history.goBack();
+        history.goBack();
     }
     const goForward = () => {
-        props.history.goForward();
+        history.goForward();
     }
 
     const shadeColor = (color, percent) => {
@@ -60,32 +58,32 @@ function Main(props) {
         return "#" + RR + GG + BB;
     }
 
-    const color = props.color ? shadeColor(props.color, -60) : '';
+    const darkenedColor = color ? shadeColor(color, -60) : '';
 
     return (
         <div>
             <header>
-                <div style={{ opacity: topBarOpacity, backgroundColor: color }} className="bg cover-full"></div>
+                <div style={{ opacity: topBarOpacity, backgroundColor: darkenedColor }} className="bg cover-full"></div>
                 <div className="nav-buttons">
                     <button onClick={goBack} title='Go back'><Arrow /></button>
                     <button style={{ transform: "matrix(-1, 0, 0, 1, 0, 0)" }} title='Go forward' onClick={goForward}><Arrow /></button>
                 </div>
                 <div className="content-wrapper">
                     <div className={showNavContent ? 'top-bar-content show' : 'top-bar-content'}>
-                        {props.navBar}
+                        {navBar}
                     </div>
                 </div>
             </header>
 
-            {props.header ? props.header : <div className="topNav-spacer"></div>}
+            {header ? header : <div className="topNav-spacer"></div>}
 
             <div className="main-container">
                 <div className="content content-spacing" ref={contentRef}>
-                    {props.children}
+                    {children}
                 </div>
             </div>
         </div>
     )
-}
+});
 
 export default withRouter(Main);
