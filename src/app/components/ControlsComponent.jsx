@@ -279,7 +279,10 @@ export default function Controls({
 								setScrubbing(false);
 								setTransition(true);
 
-                                if (isFinite(parseFloat(val)) && audio.current) {
+								if (
+									isFinite(parseFloat(val)) &&
+									audio.current
+								) {
 									audio.current.currentTime = val;
 								}
 								setTimeout(() => {
