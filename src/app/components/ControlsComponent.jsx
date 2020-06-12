@@ -88,7 +88,7 @@ export default function Controls({
 						max: audio.current.duration,
 					});
 				}
-			}, 500);
+			}, 1000);
 		};
 
 		if (audioState.isPlaying && audio.current) {
