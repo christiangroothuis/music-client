@@ -137,11 +137,8 @@ function Album({ playAlbum, pause, isPlaying, playlist, currentIndex }) {
 							<li
 								key={i}
 								className={
-									playlist[
-										currentIndex
-									] &&
-									playlist[currentIndex]
-										._id === track._id
+									playlist[currentIndex] &&
+									playlist[currentIndex]._id === track._id
 										? "track active"
 										: "track"
 								}
@@ -157,11 +154,8 @@ function Album({ playAlbum, pause, isPlaying, playlist, currentIndex }) {
 											  })
 									}
 								>
-									{playlist[
-										currentIndex
-									] &&
-									playlist[currentIndex]
-										._id === track._id ? (
+									{playlist[currentIndex] &&
+									playlist[currentIndex]._id === track._id ? (
 										<>
 											<Pause className="hover" />
 											<Volume />
