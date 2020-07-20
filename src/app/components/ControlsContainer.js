@@ -4,13 +4,14 @@ import { nextSong, prevSong, resume, pause, updateTime, changeVolume } from '../
 
 import ControlsComponent from './ControlsComponent.jsx';
 
-// AlbumComponent.propTypes = {
-// artists: PropTypes.isRequired,
-// getArtist: PropTypes.func.isRequired,
-// }
-
 const mapStateToProps = (state) => ({
     audioState: state.audioState,
+    // isPlaying: state.audioState.isPlaying,
+    // isFocused: state.audioState.isFocused,
+    // volume: state.audioState.volume,
+    // time: state.audioState.time,
+    // playlist: state.audioState.playlist,
+    // currentIndex: state.audioState.currentIndex,
 })
 
 const dispatchToProps = (dispatch) => ({

@@ -5,7 +5,7 @@ import axios from "axios";
 import { API_URL } from "../../constants";
 
 import Main from "../common/Main";
-import PagePlayOptions from "../common/PagePlayOptions";
+// import PagePlayOptions from "../common/PagePlayOptions";
 import CardSection from "../common/CardSection";
 
 import SpinnerPage from "../common/Spinner";
@@ -79,7 +79,7 @@ function Artist({ artists, getArtist, playArtist }) {
 				</div>
 			}
 		>
-			<PagePlayOptions play={() => playArtist({ artist: artist._id })} />
+			{/* <PagePlayOptions play={() => playArtist({ artist: artist._id })} /> */}
 			{artist.albums.length > 0 && (
 				<CardSection title="Albums" data={artist.albums} />
 			)}
