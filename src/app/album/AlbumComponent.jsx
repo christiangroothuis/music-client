@@ -128,7 +128,14 @@ function Album({ playAlbum, pause, isPlaying, playlist, currentIndex }) {
 				</div>
 			}
 		>
-			<PagePlayOptions play={() => playAlbum({ album: album._id })} />
+			<PagePlayOptions
+				play={() => playAlbum({ album: album._id })}
+				pause={()=>pause()}
+				playlist={playlist}
+				currentIndex={currentIndex}
+				id={album._id}
+				isPlaying={isPlaying}
+			/>
 
 			<ol>
 				{album.tracks &&
@@ -145,16 +152,18 @@ function Album({ playAlbum, pause, isPlaying, playlist, currentIndex }) {
 							>
 								<div
 									className="icon top-align"
-									onClick={() =>
-										isPlaying
+									onClick={() => {
+										isPlaying &&
+										playlist[currentIndex] &&
+										playlist[currentIndex]._id === track._id
 											? pause()
 											: playAlbum({
 													album: album._id,
 													index: i,
-											  })
-									}
+											  });
+									}}
 								>
-									{playlist[currentIndex] &&
+									{isPlaying && playlist[currentIndex] &&
 									playlist[currentIndex]._id === track._id ? (
 										<>
 											<Pause className="hover" />
