@@ -45,7 +45,7 @@ function Artist({ artists, getArtist, playArtist }) {
 			navBar={<span>{artist.name}</span>}
 			color={artist.color}
 			header={
-				<div style={{ backgroundColor: artist.color }} className="head">
+				<div style={{ backgroundColor: artist.color, marginBottom: '20px' }} className="head">
 					<div className="cover-full bg"></div>
 					<div className="avatar cover-full">
 						<img
