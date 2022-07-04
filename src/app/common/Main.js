@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React, { useRef, useState, useCallback, useLayoutEffect } from 'react';
 import { withRouter } from 'react-router-dom';
 
 import { ReactComponent as Arrow } from './icons/chevron-left.svg';
@@ -9,9 +9,8 @@ const Main = ({ history, color, header, navBar, children }) => {
     const [topBarOpacity, setTopBarOpacity] = useState(0);
     const [showNavContent, setShowNavContent] = useState(false);
 
-    // Change opacity of topbar based of offsetTop of contentRef
-    useEffect(() => {
-        const onScroll = () => {
+    const updateNav = useCallback(
+        () => {
             if (window.scrollY <= contentRef.current.offsetTop - 60) {
                 setTopBarOpacity(0)
                 setShowNavContent(false)
@@ -24,12 +23,18 @@ const Main = ({ history, color, header, navBar, children }) => {
                 setTopBarOpacity((1 - (contentRef.current.offsetTop - window.scrollY) / 60))
                 setShowNavContent(false)
             }
-        };
-        
-        window.addEventListener("scroll", onScroll);
+        },
+        [],
+    )
 
-        return () => window.removeEventListener("scroll", onScroll);
-    }, []);
+    // Change opacity of topbar based of offsetTop of contentRef
+    useLayoutEffect(() => {
+        updateNav()
+
+        window.addEventListener("scroll", updateNav);
+
+        return () => window.removeEventListener("scroll", updateNav);
+    }, [updateNav]);
 
     const goBack = () => {
         history.goBack();
