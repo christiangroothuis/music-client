@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useRef, useLayoutEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Card from './Card'
 
@@ -7,12 +7,12 @@ function CardSection({rows, data, link, title}) {
     const [limiter, setLimiter] = useState(0);
 
     // Calculate how much cards with the gaps (25px) will fit in main div without padding on window resize
-    useEffect(() => {
+    useLayoutEffect(() => {
         const handleWindowResize = () => {
             const calculation = Math.floor(
                 (mainInnerRef.current.getBoundingClientRect().width + 25) / (164 + 25)
             )
-            
+
             rows && setLimiter(
                 calculation < 1 ? rows : calculation * rows
             );
